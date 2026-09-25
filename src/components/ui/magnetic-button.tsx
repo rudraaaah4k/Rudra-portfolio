@@ -7,6 +7,7 @@ interface MagneticButtonProps {
   onClick?: () => void;
   href?: string;
   target?: string;
+  download?: boolean | string;
   variant?: "primary" | "secondary" | "ghost";
 }
 
@@ -14,7 +15,7 @@ interface MagneticButtonProps {
  * Magnetic button — uses direct DOM transform instead of framer-motion springs.
  * Removes framer-motion dependency entirely from this component.
  */
-export function MagneticButton({ children, className = "", onClick, href, target, variant = "primary" }: MagneticButtonProps) {
+export function MagneticButton({ children, className = "", onClick, href, target, download, variant = "primary" }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleMouse = useCallback((e: React.MouseEvent) => {
@@ -50,7 +51,7 @@ export function MagneticButton({ children, className = "", onClick, href, target
   );
 
   if (href) {
-    return <a href={href} target={target} rel={target === "_blank" ? "noopener noreferrer" : undefined}>{content}</a>;
+    return <a href={href} target={target} download={download} rel={target === "_blank" ? "noopener noreferrer" : undefined}>{content}</a>;
   }
   return content;
 }

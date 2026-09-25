@@ -216,6 +216,7 @@ export function Hero() {
                 variant="secondary"
                 href={LINKS.resume}
                 target="_blank"
+                download="Rudra_Resume.pdf"
                 className="group"
               >
                 <Download size={14} />
